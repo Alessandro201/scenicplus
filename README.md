@@ -1,6 +1,9 @@
 ![alt text](docs/images/SCENIC+_Logo_v5.png "SCENIC+")
 [![Documentation Status](https://readthedocs.org/projects/scenicplus/badge/?version=development)](https://scenicplus.readthedocs.io/?badge=main)
 
+### Fork differences from upstream
+> [!NOTE]
+> This fork has been updated to be installed with `uv`. The code has not beed touched.
 
 # SCENIC+ single-cell eGRN inference
 
@@ -25,14 +28,23 @@ To install SCENIC+ (in a Linux environment):
 We highly recommend to install SCENIC+ in a new conda environment.
 
 ```bash
-
-$ conda create --name scenicplus python=3.11 -y
-$ conda activate scenicplus
-$ git clone https://github.com/aertslab/scenicplus
+$ git clone https://github.com/Alessandro201/scenicplus.git
 $ cd scenicplus
-$ pip install .
-
+$ uv sync --no-dev --frozen
+$ source .venv/bin/activate
 ```
+
+## Use with jupyter
+
+To use scenicplus with jupyter you need `ipykernel`. You can either install it youself with `uv add ipykernel` or use the tested version with the following command:
+
+```bash
+uv sync --group jupyter --frozen
+
+# Add the current kernel environment to those found by jupyter
+uv run ipython kernel install --user --name scenicplus  
+```
+
 
 ## Questions?
 
